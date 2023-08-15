@@ -2,7 +2,7 @@ var pool =require('./bd');
 var md5 = require('md5');
 var usuariosModel = require('./../../models/usuariosModel')
 
-async function getUserAndPassword(user, password) {
+async function getUserByUsernameAndPassword(user, password) {
     try {
         var query = 'select * from usuarios where usuarios = ? and password = ? limit 1';
         var rows = await pool.query(query, [user, md5 (password)]);
@@ -12,4 +12,4 @@ async function getUserAndPassword(user, password) {
     }
 }
 
-module.exports = {getUserAndPassword}
+module.exports = {getUserByUsernameAndPassword}
